@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel ="icon" href="img/SkanHawk.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Operaciones - Workover</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #1b2e52;
+            background-color: #152331;
+        }
+
+        .header {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .logo {
+            display: block;
+            width: 150px;
+            max-width: 100%;
+            height: auto;
+            margin: auto;
+            
+        }
+
+        .header h2 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .fecha{
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 400;
+        }
+
+        .section-title{
+            font-size: 1.4rem;
+            color:#ffffff; 
+            border-bottom: 2px solid #BFCDD9;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #BFCDD9;
+        }
+
+        .section p {
+            font-size: 1rem;
+            line-height: 1.5; /* Espacio entre lineas */
+            margin: 5px 0;
+            font-weight: 300; /* Grosor del texto */
+        }
+
+        .section p strong {
+            color: #11405a;
+            font-weight: 600;
+        }
+       
+        /* Estilos del del footer, parrafo y logo */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            line-height: 1.5; /* Texto a la derecha. */
+            color: #ffffff;
+            padding: 15px 0;
+            margin-top: 20px;
+            font-size: 1rem;
+            font-weight: 300;
+            gap: 20px;
+        }
+
+        .footer img {
+            width: 35%;
+            max-width:100%;
+            height: 34%;
+        }
+
+    </style>
+</head>
+<body>
+    <table class="container">
+        <tr>
+            <td class="es-m-p0l" align="center"
+                style="padding:20px;Margin:0;font-size:0px"><img
+                    src="https://dlsinfoappsprod.blob.core.windows.net/apps-logos/skanhawk.png"
+                    alt
+                    style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"
+                    width="238" height="109"></td>
+        </tr>
+        <tr>
+            <td style="padding:20px;background-color:#152331;border-radius:10px;">
+                <div class="header">
+                    <!-- <img class="logo" src="https://lh3.googleusercontent.com/p/AF1QipMT36VAhXIH28kUNQbxj9I4jOGBCeJJADXuwJWG=s680-w680-h510" alt="logo-SkanHawk"style="width:150px;max-width:100%;height:auto;display:block;margin:0 auto;"> -->
+                    <h2 style='color:white;'>Reporte de Operaciones - Workover</h2>
+                    <p class="fecha"><strong>Fecha:</strong> {{ fecha }}</p>
+                </div>
+                <div>
+                    <h3 class="section-title">Información General</h3>
+                    <div class="section" style="margin:20px 0;padding:15px;border-radius:8px;background-color:#BFCDD9;">
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>ID: </strong>{{ Id }}</p> <!--Campo de ID -->
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>POZO: </strong>{{ pozo }}</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>MUNICIPIO: </strong>{{ municipio }}</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>COMPANY MAN: </strong>{{ company_man }}</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>FECHA DE REPORTE: </strong>{{ Fecha_Reporte}}</p> <!--Campo fecha de reporte-->
+                    </div>
+                    <h3 class="section-title">Tiempos de Operación</h3>
+                    <div class="section" style="margin:20px 0;padding:15px;border-radius:8px;background-color:#BFCDD9;">
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>HORAS PERDIDAS EN LE DÍA: </strong>{{ horas_perdidas_dia }}</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>HORAS ACUMULADAS EN EL MES: </strong> {{ horas_acumuladas_mes }}</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>NPT: </strong>[NPT]</p>
+                    </div>
+                    <h3 class="section-title">Movilización</h3>
+                    <div class="section" style="margin:20px 0;padding:15px;border-radius:8px;background-color:#BFCDD9;">
+                        <table style="width: 100%; border-collapse: collapse;" ><!--Estilos de las tablas-->
+                            <thead >
+                                <tr style="background-color: #152331; color: white; text-align: left;">
+                                    <th style="padding: 8px; border: 1px solid #BFCDD9;">ID</th>
+                                    <th style="padding: 8px; border: 1px solid #BFCDD9;">Kilometros</th>
+                                    <th style="padding: 8px; border: 1px solid #BFCDD9;">Pozo Origen</th>
+                                    <th style="padding: 8px; border: 1px solid #BFCDD9;">Pozo Destino</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for req in movilizacion %}
+                                <tr style="background-color: #ffffff; color: #000;">
+                                    <td style="padding: 8px; border: 1px solid #BFCDD9;">{{ req.id }}</td>
+                                    <td style="padding: 8px; border: 1px solid #BFCDD9;">{{ req.kilometres }}</td>
+                                    <td style="padding: 8px; border: 1px solid #BFCDD9;">{{ req.origin_well }}</td>
+                                    <td style="padding: 8px; border: 1px solid #BFCDD9;">{{ req.target_well }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="section-title">Pruebas y Sistemas</h3>
+                    <div class="section" style="margin:20px 0;padding:15px;border-radius:8px;background-color:#BFCDD9;">
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>ÚLTIMA PRUEBA DE  BOP'S: </strong>{{ prueba_bop }}</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>ÚLTIMA PRUEBA DE CROWN O MATIC & TWIN STOP: </strong>{{ prueba_crown }}</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>ESTADO DEL SISTEMA LESS: </strong>{{ sistema_less }}</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>ESTADO DEL SISTEMA SKANHAWK: </strong>{{ sistema_skanhawk }}</p>
+                    </div>
+                    <h3 class="section-title">Personal y Consumo - ACPM</h3>
+                    <div class="section" style="margin:20px 0;padding:15px;border-radius:8px;background-color:#BFCDD9;">
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>NÚMERO DE PERSONAS REPORTADAS: </strong>[NUMERO_DE_PERSONAS_REPORTADAS]</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>ACPM - EXISTENCIAS ACTUALES </strong>[ACPM]</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>CONSUMO DEL DÍA: </strong>[CONSUMO_DEL_DIA]</p>
+                    </div>
+                    <h3 class="section-title">Novedades</h3>
+                    <div class="section" style="margin:20px 0;padding:15px;border-radius:8px;background-color:#BFCDD9;">
+                        <table style="width: 100%; border-collapse: collapse;" >
+                            <thead>
+                                <tr style="background-color: #152331; color: white; text-align: left;">
+                                    <th style="padding: 8px; border: 1px solid #BFCDD9;">ID</th>
+                                    <th style="padding: 8px; border: 1px solid #BFCDD9;">Descripción</th>
+                                    <th style="padding: 8px; border: 1px solid #BFCDD9;">Área</th>
+                                    <th style="padding: 8px; border: 1px solid #BFCDD9;">Prioridad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for req in new_requirement %}
+                                <tr style="background-color: #ffffff; color: #000;">
+                                    <td style="padding: 8px; border: 1px solid #BFCDD9;">{{ req.id }}</td>
+                                    <td style="padding: 8px; border: 1px solid #BFCDD9;">{{ req.description }}</td>
+                                    <td style="padding: 8px; border: 1px solid #BFCDD9;">{{ req.new_area }}</td>
+                                    <td style="padding: 8px; border: 1px solid #BFCDD9;">{{ req.priority }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="section-title">Actividades</h3>
+                    <div class="section">
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>00:00 a 24:00 (DÍA ANTERIOR):</strong></p>
+                            <p> 🔹 {{ resumen_actividad }}</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>00:00 am a 06:00 (DÍA ACTUAL):</strong></p>
+                            <p> 🔹 {{ actividad_00_06 }}</p>
+                            <p><strong style = 'color:#152331; text-decoration: underline; text-decoration-thickness: 3px;'>06:00 am a 24:00 (DÍA ACTUAL):</strong></p>
+                            <p> 🔹 {{ actividad_06_24 }}</p>
+                    </div>
+
+                <div class="footer">
+                    <img src="https://dlsinfoappsprod.blob.core.windows.net/clients-logo/indep_logo_blanco.png" alt="Logo-Independence"
+                        style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"
+                        width="238" height="109">
+                    <p><b>Cordialmente,</b>
+                        <br>
+                        {{ username }} <br>
+                        {{ usercharge }} - {{ rig }}<br>
+                        {{ empresa }}<br>
+                    </p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
